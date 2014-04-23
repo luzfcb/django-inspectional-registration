@@ -7,15 +7,17 @@ NAME = 'django-inspectional-registration'
 VERSION = '0.3.1'
 
 # Make sure the django.mo file also exists:
-if 'sdist' in sys.argv:
+if any(x for x in ['sdist', 'install'] if x in sys.argv):
     try:
+        from django.core.management.commands.compilemessages import compile_messages
         os.chdir('src')
         os.chdir('registration')
-        from django.core.management.commands.compilemessages import compile_messages
         compile_messages(sys.stderr)
-    finally:
         os.chdir('..')
         os.chdir('..')
+    except ImportError:
+        print('please, install Django first, then install django-inspectional-registration')
+        exit(0)
 
 
 def read(filename):
