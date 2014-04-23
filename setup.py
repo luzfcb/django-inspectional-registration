@@ -26,7 +26,7 @@ else:
               'compile the locale files during installation of '
               'django-inspectional-registration.\nPlease, install '
               'Django first. Done so, install the django-registration'
-              '-inspectional\n'
+              '-inspectional \n'
               '####################################################\n')
         exit(1)
     else:
